@@ -17,7 +17,9 @@ The adoption of machine learning (ML) in organizations is characterized by the u
 - **repository**: Contains metadata to recreate the metadata repository
 - **source-code**: Contains the corresponding source code of the ML solutions described in the metadata repository.
 
-![](C:\Users\alexv\Documents\PhD\1prod\assistml\assistML_archi.png)
+<img src="./assistML_archi.png"/>
+
+
 
 
 
