@@ -21,9 +21,26 @@ The adoption of machine learning (ML) in organizations is characterized by the u
 
 
 
+## Reproducibility
 
+The following steps need to be carried out to run the prototype of AssistML and reproduce the evaluation setup:  
 
-## Further notes
+1. Clone the repository.
+2. Satisfy dependencies.
+3. Create repository in Mongo with the provided data.
+4. Launch the API (”assist.R”) and web interface (”assist dashboard.py”).
+5. In a web browser go to http://localhost:8050
+6. To reproduce evaluation setting q-steel-20, watch the video q-steel-20.mkv (see below).  Other evaluation settings can be reproduced in a
+   similar manner.  
+
+## System Requirements
+
+- Ubuntu 18.04 host 
+  - 2 CPUs at 2.5 GHz
+  - 8 GB of memory 
+  - 40 GB of disk space.  
+
+## Demo Video
 
 A demonstration video is provided: *[q-steel-20.mkv](q-steel-20.mkv)*
 
