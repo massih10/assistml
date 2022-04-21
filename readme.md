@@ -1,4 +1,4 @@
-# AssistML: A concept to recommend ML solutions for predictive use cases
+# AssistML: An alternative to AutoML recommending ML Solutions
 
 > 21.04.2022
 
@@ -8,7 +8,9 @@
 
 ## Abstract
 
-The adoption of machine learning (ML) in organizations is characterized by the use of multiple ML software components. Citizen data scientists face practical requirements when building ML systems, which go beyond the known challenges of ML, e. g., data engineering or parameter optimization. They are expected to quickly identify ML system options that strike a suitable trade-off across multiple performance criteria. These options also need to be understandable for non-technical users. Addressing these practical requirements represents a problem for citizen data scientists with limited ML experience. This calls for a method to help them identify suitable ML software combinations. Related work, e. g., AutoML systems, are not responsive enough or cannot balance different performance criteria. In this paper, we introduce AssistML, a novel concept to recommend ML solutions, i. e., software systems with ML models, for predictive use cases. AssistML uses metadata of existing ML solutions to quickly identify and explain options for a new use case. We implement the approach and evaluate it with two exemplary use cases. Results show that AssistML leads to implementations with comparable performance and in line with users’ preferences in seconds.
+The adoption of machine learning (ML) in organizations is characterized by the use of multiple ML software components. When building ML systems out of these software components, citizen data scientists face practical requirements which go beyond the known challenges of ML, e. g., data engineering or parameter optimization. They are expected to quickly identify ML system options that strike a suitable trade-off across multiple performance criteria. These options also need to be understandable for non-technical users. Addressing these practical requirements represents a problem for citizen data scientists with limited ML experience. This calls for a concept to help them identify suitable ML software combinations. Related work, e. g., AutoML systems, are not responsive enough or cannot balance different performance criteria.
+
+This paper explains how AssistML, a novel concept to recommend ML solutions, i. e., software systems with ML models, can be used as an alternative for predictive use cases. Our concept collects and preprocesses metadata of existing ML solutions to quickly identify the ML solutions that can be reused in a new use case. We implement AssistML and evaluate it with two exemplary use cases. Results show that AssistML can recommend ML solutions in line with users' performance preferences in seconds. Compared to AutoML, AssistML offers citizen data scientists simpler, intuitively explained ML solutions in considerably less time. Moreover, these solutions perform similarly or even better than AutoML models. 
 
 ## Repository organization
 
