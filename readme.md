@@ -1,6 +1,6 @@
 # AssistML: A concept to recommend ML solutions for predictive use cases
 
-> 18.05.2021
+> 21.04.2022
 
 <img src="./assistML.png"/>
 
@@ -10,12 +10,13 @@
 
 The adoption of machine learning (ML) in organizations is characterized by the use of multiple ML software components. Citizen data scientists face practical requirements when building ML systems, which go beyond the known challenges of ML, e. g., data engineering or parameter optimization. They are expected to quickly identify ML system options that strike a suitable trade-off across multiple performance criteria. These options also need to be understandable for non-technical users. Addressing these practical requirements represents a problem for citizen data scientists with limited ML experience. This calls for a method to help them identify suitable ML software combinations. Related work, e. g., AutoML systems, are not responsive enough or cannot balance different performance criteria. In this paper, we introduce AssistML, a novel concept to recommend ML solutions, i. e., software systems with ML models, for predictive use cases. AssistML uses metadata of existing ML solutions to quickly identify and explain options for a new use case. We implement the approach and evaluate it with two exemplary use cases. Results show that AssistML leads to implementations with comparable performance and in line with users’ preferences in seconds.
 
-## Code organization
+## Repository organization
 
 - **python-modules**: Main script is assist-dashboard.py
 - **r-api**: R modules are located in this directory. Main script is assist.R
 - **repository**: Contains metadata to recreate the metadata repository
 - **source-code**: Contains the corresponding source code of the ML solutions described in the metadata repository.
+- **Experimental_Data.pdf**: Includes the full list of ML solutions recommended by AssistML for four different use cases, as well as their corresponding adapted ML solutions obtained by reusing the source code.  
 
 <img src="./assistML_archi.png"/>
 
@@ -44,4 +45,10 @@ The following steps need to be carried out to run the prototype of AssistML and 
 
 A demonstration video is provided: *[q-steel-20.mkv](q-steel-20.mkv)*
 
-Currently under submission. Arxiv will be made available upon acceptance.
+## Disclaimer
+
+This is an experimental codebase, not ready for production. 
+
+The contents of this repository are provided as-is, with no implied warranty.
+
+No maintenance or support for applications of this codebase is provided.
