@@ -23,7 +23,7 @@ def process_cmd_arg(cmd_argument, available_elements_db):
 def main():
 
     # Database connection
-    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    myclient = myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
     dbname = myclient["assistml"]
     collection_enriched = dbname["enriched_models"]
     print("Connected to database")
@@ -33,16 +33,20 @@ def main():
 
     data_new = pd.DataFrame([])
     # Select model names (Row names) for analysis
-    if len(sys.argv) >2:
+    if len(sys.argv) > 2:
         model_names_list = sys.argv[2]
         models_list = process_cmd_arg(model_names_list, model_names_enriched)
-        if(len(models_list) != 0):
+        if len(models_list) != 0:
             print("Found model names list in cmd argument")
             for model_name in models_list:
-                data_new = data_new.append(data[data.model_name == model_name],ignore_index=True)
+                # Create a subset DataFrame for the model_name
+                subset = data[data.model_name == model_name]
+                # Concatenate subset to data_new
+                data_new = pd.concat([data_new, subset], ignore_index=True)
             print(data_new)
         else:
             print("Using all models for csv generation")
+
 
     # Select column names for analysis
     new_file_name=""

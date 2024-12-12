@@ -30,19 +30,32 @@ python_rules<-function(model_codes){
 
   print("Calling python data_encoder.py...")
   # Triggers execution of python modules with mlxtend to generate rules
+  print("osversion")
+  print(osVersion)
 
   data_enc<-"import os\n"
 
 # Appending right path depending on OS
-  if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
-    # For Windows local
-    data_enc<-paste0(data_enc,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/data_encoder.py [\"fam_name\",\"nr_hyperparams_label\",\"performance_gap\",\"quantile_accuracy\",\"quantile_recall\",\"quantile_precision\",\"platform\",\"quantile_training_time\",\"nr_dependencies\"] [\"",paste0(model_codes,collapse = "\",\""),"\"]\')")
-    print(osVersion)
-  }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
-    # For Ubuntu remote
-    data_enc<-paste0(data_enc,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/data_encoder.py \"[fam_name,nr_hyperparams_label,performance_gap,quantile_accuracy,quantile_recall,quantile_precision,platform,quantile_training_time,nr_dependencies]\" \"[",paste0(model_codes,collapse = ","),"]\"\')")
-    print(osVersion)
-  }
+  # if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
+  #   # For Windows local
+  #   data_enc<-paste0(data_enc,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/data_encoder.py [\"fam_name\",\"nr_hyperparams_label\",\"performance_gap\",\"quantile_accuracy\",\"quantile_recall\",\"quantile_precision\",\"platform\",\"quantile_training_time\",\"nr_dependencies\"] [\"",paste0(model_codes,collapse = "\",\""),"\"]\')")
+  #   print(osVersion)
+  # }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
+  #   # For Ubuntu remote
+  #   data_enc<-paste0(data_enc,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/data_encoder.py \"[fam_name,nr_hyperparams_label,performance_gap,quantile_accuracy,quantile_recall,quantile_precision,platform,quantile_training_time,nr_dependencies]\" \"[",paste0(model_codes,collapse = ","),"]\"\')")
+  #   print(osVersion)
+  # }
+
+  data_enc <- paste0(
+  data_enc,
+  "os.system('",
+  "/home/shoseini/assistml/venv-assistml/bin/python3.9 ",
+  "/home/shoseini/assistml/python-modules/data_encoder.py ",
+  "\"[fam_name,nr_hyperparams_label,performance_gap,quantile_accuracy,quantile_recall,quantile_precision,platform,quantile_training_time,nr_dependencies]\" ",
+  "\"[", 
+  paste0(model_codes, collapse = ","), 
+  "]\"')"
+)
 
   # paste0(c("SVM_kick_003","DTR_kick_012","RFR_kick_022","DTR_kick_011","NBY_bank_002"),collapse = "\",\"")
 
@@ -56,15 +69,18 @@ python_rules<-function(model_codes){
 
   # Ranking metric :: 0=confidence | 1=lift | 2=leverage | 3=Conviction
   # ranking metric, metric min score, min support
-  if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
-    # For Windows local
-    rules_py<-paste0(rules_py,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/association_python.py 0 0.7 0.25 \')")
-    print(osVersion)
-  }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
-    # For Ubuntu remote
-    rules_py<-paste0(rules_py,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/association_python.py 0 0.7 0.25 \')")
-    print(osVersion)
-  }
+  # if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
+  #   # For Windows local
+  #   rules_py<-paste0(rules_py,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/association_python.py 0 0.7 0.25 \')")
+  #   print(osVersion)
+  # }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
+  #   # For Ubuntu remote
+  #   rules_py<-paste0(rules_py,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/association_python.py 0 0.7 0.25 \')")
+  #   print(osVersion)
+  # }
+
+  rules_py<-paste0(rules_py,"os.system(\'/home/shoseini/assistml/venv-assistml/bin/python3.9 /home/shoseini/assistml/python-modules/association_python.py 0 0.7 0.25 \')")
+
 
 
 
@@ -75,16 +91,18 @@ python_rules<-function(model_codes){
 
   analysis_py<-"import os\n"
 
+  # if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
+  #   # For Windows local
+  #   analysis_py<-paste0(analysis_py,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/analysis.py 0.5 0.01 1.2 \')")
+  #   print(osVersion)
+  # }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
+  #   # For Ubuntu remote
+  #   analysis_py<-paste0(analysis_py,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/analysis.py 0.5 0.01 1.2 \')")
+  #   print(osVersion)
+  # }
 
-  if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
-    # For Windows local
-    analysis_py<-paste0(analysis_py,"os.system(\'python C:/Users/alexv/Documents/PhD/2stdi/ws19-studyproject/mlm-perf/modules/analysis.py 0.5 0.01 1.2 \')")
-    print(osVersion)
-  }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
-    # For Ubuntu remote
-    analysis_py<-paste0(analysis_py,"os.system(\'python3.8 /home/ubuntu/mlm-perf/modules/analysis.py 0.5 0.01 1.2 \')")
-    print(osVersion)
-  }
+  analysis_py<-paste0(analysis_py,"os.system(\'/home/shoseini/assistml/venv-assistml/bin/python3.9 /home/shoseini/assistml/python-modules/analysis.py 0.5 0.01 1.2 \')")
+
 
 
   write(analysis_py,file = "push_rules.py",append = F)
@@ -104,7 +122,7 @@ python_rules<-function(model_codes){
 
 
 
-  rules<-mongolite::mongo("rules","assistml","mongodb://localhost")
+  rules<-mongolite::mongo("rules","assistml","mongodb://admin:admin@localhost:27017/")
   current_setofrules<-rules$find(query = paste0('{ "Rules":{"$exists":true}, "Experiment.created":"',rulestamp,'"}'),
                               fields = '{"Rules":true}'
                               )$Rules

@@ -21,6 +21,7 @@ def main():
 
     # creates json file using the rules generated from the FPGrowth algorithm and store in output/FPGROWTH folder
     def create_save_json_output(rules,ranking_metric,metric_min_score,min_support,total_nr_models):
+        print("association_pyton line 24")
         flag =0
         rule_found=1
         max_count = 0
@@ -99,6 +100,8 @@ def main():
         json_format=json.dumps(dict_super, indent=4)
         max_count=max_count+1
         outfile="EXP_"+str(max_count)+".json"
+        print("association_pyton line 103")
+        print(dir)
         with open(dir+outfile, "a") as myfile:
             myfile.write(json_format)
         myfile.close()
@@ -107,7 +110,7 @@ def main():
     
     # Database details
     '''print("Connected to database")
-    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    myclient = myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
     dbname = myclient["assistml"]
     collection_enriched = dbname["enriched_models"]
     total_no_models = collection_enriched.count()

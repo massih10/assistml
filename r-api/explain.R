@@ -7,19 +7,21 @@ explain_python<-function(model_code){
 
 
  script<-"import os\n"
+ print("osversion")
+ print(osVersion)
 
- # Appending right path depending on OS
- if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
-   # For Windows local
-   script<-paste0(script,"os.system(\'python C:/Users/alexv/Documents/PhD/1prod/guacamole/asm-2/2_code/explainability.py -m ",model_code,"\')")
-   print(osVersion)
- }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
-   # For Ubuntu remote
-   script<-paste0(script,"os.system(\'python3.8 /home/ubuntu/asm-2/2_code/explainability .py -m ",model_code,"\')")
-   print(osVersion)
- }
+#  # Appending right path depending on OS
+#  if(stringr::str_match(osVersion,"Windows") %in% "Windows"){
+#    # For Windows local
+#    script<-paste0(script,"os.system(\'python C:/Users/alexv/Documents/PhD/1prod/guacamole/asm-2/2_code/explainability.py -m ",model_code,"\')")
+#    print(osVersion)
+#  }else if(stringr::str_match(osVersion,"Ubuntu") %in% "Ubuntu"){
+#    # For Ubuntu remote
+#    script<-paste0(script,"os.system(\'python3.8 /home/ubuntu/asm-2/2_code/explainability .py -m ",model_code,"\')")
+#    print(osVersion)
+#  }
+  script<-paste0(script,"os.system(\'/home/shoseini/assistml/venv-assistml/bin/python3.9 /home/shoseini/assistml/python-modules/explainability .py -m ",model_code,"\')")
 
- # paste0(c("SVM_kick_003","DTR_kick_012","RFR_kick_022","DTR_kick_011","NBY_bank_002"),collapse = "\",\"")
 
 
  if(verbose){
@@ -32,7 +34,11 @@ explain_python<-function(model_code){
  if(verbose){
     print(paste("Retrieving explanations from Mongo for",model_code))
  }
- base<-mongolite::mongo("base_models","assistml")
+ base <- mongolite::mongo(
+    collection = "base_models",
+    db = "assistml",
+    url = "mongodb://admin:admin@localhost:27017/"
+)
  return(
     base$find( query =eval(parse(text = paste0("'{\"Model.Info.name\":{\"$in\":[\"",model_code,"\"]}}'") )) )
  )

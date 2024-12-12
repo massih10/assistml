@@ -1,0 +1,53 @@
+{
+   "Rule_Number_017":{
+      "antecedent_sup":      0.827586206896552,
+      "antecedents":[
+         "platform_scikit"
+      ],
+      "confidence":      0.966666666666667,
+      "consequent_sup":      0.8,
+      "consequents":[
+         "nr_dependencies_6"
+      ],
+      "conviction":      6.00000000000002,
+      "full_rule":"['platform_scikit'] : 0.8275862068965517 => ['nr_dependencies_6'] : 0.8",
+      "leverage":      0.137931034482759,
+      "lift":      1.20833333333333
+   },
+   "Rule_Number_020":{
+      "antecedent_sup":      0.524137931034483,
+      "antecedents":[
+         [
+"nr_hyperparams_label_from_5_to_10",
+"platform_scikit"
+         ]
+      ],
+      "confidence":      0.960526315789474,
+      "consequent_sup":      0.8,
+      "consequents":[
+         "nr_dependencies_6"
+      ],
+      "conviction":      5.06666666666665,
+      "full_rule":"['nr_hyperparams_label_from_5_to_10', 'platform_scikit'] : 0.5241379310344828 => ['nr_dependencies_6'] : 0.8",
+      "leverage":      0.0841379310344827,
+      "lift":      1.20065789473684
+   },
+   "Rule_Number_030":{
+      "antecedent_sup":      0.386206896551724,
+      "antecedents":[
+         [
+"fam_name_RFR",
+"platform_scikit"
+         ]
+      ],
+      "confidence":      0.964285714285714,
+      "consequent_sup":      0.8,
+      "consequents":[
+         "nr_dependencies_6"
+      ],
+      "conviction":      5.60000000000002,
+      "full_rule":"['fam_name_RFR', 'platform_scikit'] : 0.38620689655172413 => ['nr_dependencies_6'] : 0.8",
+      "leverage":      0.063448275862069,
+      "lift":      1.20535714285714
+   }
+}

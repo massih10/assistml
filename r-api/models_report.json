@@ -1,0 +1,527 @@
+{
+   "summary":{
+      "query_issued":{
+         "number":         39,
+         "madeat":"20241212-1039",
+         "classif_type":"binary",
+         "classif_output":"single",
+         "dataset":"steelplates.csv",
+         "semantic_types":[
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"C",
+"C",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"C",
+"N",
+"N",
+"N",
+"N",
+"N",
+"N",
+"C"
+         ],
+         "accuracy_range":         0.45,
+         "precision_range":         0.45,
+         "recall_range":         0.45,
+         "traintime_range":         0.45
+      },
+      "acceptable_models":      17,
+      "nearly_acceptable_models":      2,
+      "distrust_score":      0.7778,
+      "warnings":[
+         "Dataset similarity level 0. Only the type of task and output match. Distrust Pts increased by 3",
+         "The selection of ACC solutions was not as clean as possible. Distrust Pts increased by 1",
+         "The selection of NACC solutions was not as clean as possible. Distrust Pts increased by 3"
+      ]
+   },
+   "acceptable_models":[
+      {
+         "name":"Model trained with Naive Bayes",
+         "language":"python",
+         "platform":"pycaret.classification.create_model(nb)",
+         "nr_hparams":         3,
+         "nr_dependencies":         8,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         4,
+         "power":"1.70",
+         "out_analysis":"Suitable to detect variations in data like NA, NA, NA, NA, NA, V2, V4, V7, V8, V9, V16. Unsuitable to detect variations in data like NA, NA, NA, NA, NA.",
+         "preprocessing":"The numerical data is read (with) RobustScaler. Numerical data was filtered based on Best 75% features using PCA. Categorical data is read (with) LabelEncoding. Categorical data was filtered based on Best 75% features using chi2. ",
+         "overall_score":         0.9994,
+         "performance":{
+            "accuracy":"A+",
+            "precision":"A+",
+            "recall":"A+",
+            "training_time":"A"
+         },
+         "code":"NBY_bank_003"
+      },
+      {
+         "name":"Model trained with Support Vector Machines",
+         "language":"python",
+         "platform":"pycaret.classification.create_model(svm)",
+         "nr_hparams":         5,
+         "nr_dependencies":         8,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         4,
+         "power":"1.70",
+         "out_analysis":"Suitable to detect variations in data like NA, NA, NA, NA, NA, V2, V4, V7, V8, V9, V16. Unsuitable to detect variations in data like NA, NA, NA, NA, NA.",
+         "preprocessing":"The numerical data is read (with) RobustScaler. Numerical data was filtered based on Best 75% features using PCA. Categorical data is read (with) LabelEncoding. Categorical data was filtered based on Best 75% features using chi2. ",
+         "overall_score":         0.9984,
+         "performance":{
+            "accuracy":"A+",
+            "precision":"A+",
+            "recall":"A+",
+            "training_time":"B"
+         },
+         "code":"SVM_bank_007"
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.ExtraTreeClassifier",
+         "nr_hparams":         14,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like PurchDate, VehicleAge, IsOnlineSale. Unsuitable to detect variations in data like VehOdo, VehBCost, WarrantyCost.",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9914,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"RFR_kick_011",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Logistic Regression",
+         "language":"python",
+         "platform":"pycaret.classification.create_model(lr)",
+         "nr_hparams":         4,
+         "nr_dependencies":         8,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         4,
+         "power":"1.70",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) RobustScaler. Numerical data was filtered based on Best 75% features using PCA. Categorical data is read (with) LabelEncoding. Categorical data was filtered based on Best 75% features using chi2. ",
+         "overall_score":         0.9903,
+         "performance":{
+            "accuracy":"A+",
+            "precision":"A+",
+            "recall":"A+",
+            "training_time":"C"
+         },
+         "code":"LGR_bank_022"
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like PurchDate, VehicleAge, IsOnlineSale. Unsuitable to detect variations in data like VehBCost, WarrantyCost.",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9875,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"D"
+         },
+         "code":"RFR_kick_030",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like MMRAcquisitionAuctionAveragePrice, MMRCurrentAuctionAveragePrice, MMRCurrentAuctionCleanPrice, PurchDate, VehicleAge, IsOnlineSale. Unsuitable to detect variations in data like VehOdo, WarrantyCost.",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9875,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"RFR_kick_028",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9869,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"RFR_kick_023",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9867,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"RFR_kick_024",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Random Forests",
+         "language":"python",
+         "platform":"sklearn.ensemble.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.985,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"RFR_kick_026",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Decision Trees",
+         "language":"python",
+         "platform":"sklearn.tree.DecisionTreeClassifier",
+         "nr_hparams":         3,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9539,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"DTR_kick_019",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Decision Trees",
+         "language":"python",
+         "platform":"sklearn.tree.ExtraTreeClassifier",
+         "nr_hparams":         3,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9537,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"C"
+         },
+         "code":"DTR_kick_012",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Decision Trees",
+         "language":"python",
+         "platform":"sklearn.tree.DecisionTreeClassifier",
+         "nr_hparams":         3,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, PurchDate, VehicleAge, IsOnlineSale. Unsuitable to detect variations in data like NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA.",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.9537,
+         "performance":{
+            "accuracy":"A",
+            "precision":"A",
+            "recall":"A",
+            "training_time":"B"
+         },
+         "code":"DTR_kick_018",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Gradient Boosting Ensemble",
+         "language":"python",
+         "platform":"h2o.estimators.gbm",
+         "nr_hparams":         4,
+         "nr_dependencies":         7,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":"2",
+         "power":"2.6",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Categorical data is read (with) as-is. ",
+         "overall_score":         0.787,
+         "performance":{
+            "accuracy":"B",
+            "precision":"D",
+            "recall":"B",
+            "training_time":"C"
+         },
+         "code":"GBE_bank_001"
+      },
+      {
+         "name":"Model trained with Deep Learning",
+         "language":"python",
+         "platform":"h2o.estimators.deeplearning",
+         "nr_hparams":         10,
+         "nr_dependencies":         7,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":"2",
+         "power":"2.6",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Categorical data is read (with) as-is. ",
+         "overall_score":         0.7815,
+         "performance":{
+            "accuracy":"D",
+            "precision":"E",
+            "recall":"B",
+            "training_time":"B"
+         },
+         "code":"DLN_bank_014"
+      },
+      {
+         "name":"Model trained with Deep Learning",
+         "language":"python",
+         "platform":"h2o.estimators.deeplearning",
+         "nr_hparams":         10,
+         "nr_dependencies":         7,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":"2",
+         "power":"2.6",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Categorical data is read (with) as-is. ",
+         "overall_score":         0.7794,
+         "performance":{
+            "accuracy":"C",
+            "precision":"D",
+            "recall":"B",
+            "training_time":"B"
+         },
+         "code":"DLN_bank_011"
+      },
+      {
+         "name":"Model trained with Logistic Regression",
+         "language":"python",
+         "platform":"sklearn.linear_model.LogisticRegression",
+         "nr_hparams":         5,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Categorical data is read (with) One-Hot Encoding. ",
+         "overall_score":         0.7284,
+         "performance":{
+            "accuracy":"B",
+            "precision":"B",
+            "recall":"D",
+            "training_time":"B"
+         },
+         "code":"LGR_bank_006",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Logistic Regression",
+         "language":"python",
+         "platform":"sklearn.linear_model.LogisticRegression",
+         "nr_hparams":         5,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":"2",
+         "power":"2.6",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Categorical data is read (with) One-Hot Encoding. ",
+         "overall_score":         0.7258,
+         "performance":{
+            "accuracy":"A",
+            "precision":"C",
+            "recall":"D",
+            "training_time":"A"
+         },
+         "code":"LGR_bank_014",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      }
+   ],
+   "nearly_acceptable_models":[
+      {
+         "name":"Model trained with Support Vector Machines",
+         "language":"python",
+         "platform":"sklearn.svm.SVC",
+         "nr_hparams":         8,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":"2",
+         "power":"2.6",
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.6425,
+         "performance":{
+            "accuracy":"E",
+            "precision":"D",
+            "recall":"C",
+            "training_time":"C"
+         },
+         "code":"SVM_kick_009",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      },
+      {
+         "name":"Model trained with Decision Trees",
+         "language":"python",
+         "platform":"sklearn.tree.RandomForestClassifier",
+         "nr_hparams":         6,
+         "nr_dependencies":         6,
+         "implementation":"single_language",
+         "deployment":"single_host",
+         "cores":         2,
+         "power":         2.6,
+         "out_analysis":"Suitable to detect variations in data like . Unsuitable to detect variations in data like .",
+         "preprocessing":"The numerical data is read (with) as-is. Numerical data was filtered based on Numerical Analysis Metrics. Categorical data is read (with) One-Hot Encoding. Categorical data was filtered based on Expert Removal. ",
+         "overall_score":         0.6249,
+         "performance":{
+            "accuracy":"E",
+            "precision":"E",
+            "recall":"C",
+            "training_time":"B"
+         },
+         "code":"DTR_kick_020",
+         "rules":[
+"IF ML solution has [platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [nr_hyperparams_label_from_5_to_10, platform_scikit] then [nr_dependencies_6]. ",
+"IF ML solution has [fam_name_RFR, platform_scikit] then [nr_dependencies_6]. "
+         ]
+      }
+   ]
+}

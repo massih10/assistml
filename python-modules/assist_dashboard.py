@@ -273,7 +273,7 @@ def plotting_response(acceptable_models, nearly_acceptable_models):
     accuracy = []
     acceptable_or_nearly = []
     models_names = []
-    client = pymongo.MongoClient(port=27017)
+    client = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
     db = client["assistml"]
     enriched_models = db["enriched_models"]
 
@@ -581,9 +581,18 @@ header = html.Div([
     }
 )
 
+MONGO_INITDB_ROOT_USERNAME = "admin"
+MONGO_INITDB_ROOT_PASSWORD = "admin"
+MONGODB_HOST = "localhost"  # Or the IP address where MongoDB is running
+MONGODB_PORT = 27017
+
+# Create the connection string
+connection_string = f"mongodb://{MONGO_INITDB_ROOT_USERNAME}:{MONGO_INITDB_ROOT_PASSWORD}@{MONGODB_HOST}:{MONGODB_PORT}/"
+
 # Database details
 # same id as the api 192.168.221.146
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+# Connect to MongoDB
+myclient = pymongo.MongoClient(connection_string)
 dbname = myclient["assistml"]
 collection_datasets = dbname["datasets"]
 enriched_datasets = dbname["enriched_models"]
@@ -1061,7 +1070,7 @@ def update_output(value):
 
 submit_button = html.Div([
     dbc.Button("Analyse Dataset", id="submit_button",
-               color="primary", className="mr-1", block=True,
+               color="primary", className="mr-1", # block=True,
                style={"justify": "center", 'block': 'True', 'width': '100%', "background-color": "rgb(176,196,222)",
                       "font-color": "black"},
                ),
@@ -1254,6 +1263,7 @@ def trigger_data_profiler(submit_btn_clicks, use_case, user_use_case, csv_file_c
     print(type(submit_btn_clicks))
     content_type, content_string = str(csv_file_contents).split(',')
     print(type(content_string))
+    print(use_case)
     if "no selection" in use_case:
         use_case = user_use_case['props']['value']
     data_profiler = DataProfiler(mode, '', content_string, csv_filename, class_label, class_feature_type, use_case,
@@ -1267,6 +1277,7 @@ def trigger_data_profiler(submit_btn_clicks, use_case, user_use_case, csv_file_c
     # TODO handle the suggested features here.
     suggested_features = suggest_features_to_user(json_output, class_feature_type)
     suggested_features = construct_output_html(suggested_features)
+    print("here")
     response_api_call = api_call_R_backend(class_feature_type, feature_type_list, classification_type, accuracy_slider,
                                            precision_slider, recall_slider, trtime_slider, use_case, csv_filename)
     # algorithm_family,

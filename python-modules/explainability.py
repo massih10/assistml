@@ -37,7 +37,7 @@ def main():
     args = parser.parse_args()
     modelName = args.modelName
 
-    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    myclient = myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
     dbname = myclient["assistml"]
     collectionname = dbname["base_models"]
     collection_datasets = dbname["datasets"]

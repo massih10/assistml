@@ -1,0 +1,106 @@
+python -n venv venv-assistml
+source venv-assistml/bin/activate
+
+apt-get update
+apt install -y jq
+jq -s '.' repository/enriched_models.json > repository/enriched_models_formatted.json
+jq -s '.' repository/datasets.json > repository/datasets_formatted.json
+jq -s '.' repository/base_models.json > repository/base_models_formatted.json
+
+
+#### compose_file ####
+version: "3.3"
+services:
+  mongodb:
+    image: mongo:4.2-bionic
+    container_name: mongodb
+    command: mongod
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=assistml
+#### compose_file ####
+docker compose up -d
+
+docker cp repository/datasets_formatted.json mongodb:/datasets.json
+docker cp repository/enriched_models_formatted.json mongodb:/enriched_models.json
+docker cp repository/base_models_formatted.json mongodb:/base_models.json
+
+docker exec -it mongodb bash
+mongoimport --db assistml --collection datasets --file /datasets.json --jsonArray --username admin --password admin --authenticationDatabase admin
+mongoimport --db assistml --collection enriched_models --file /enriched_models.json --jsonArray --username admin --password admin --authenticationDatabase admin
+mongoimport --db assistml --collection base_models --file /base_models.json --jsonArray --username admin --password admin --authenticationDatabase admin
+
+
+sudo apt install dirmngr apt-transport-https ca-certificates software-properties-common gnupg2
+sudo apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/debian buster-cran35/'
+sudo apt update
+sudo apt install r-base
+R --version
+
+cd r-api
+sudo apt install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+sudo apt install -y libgit2-dev libsodium-dev
+sudo apt install -y libsasl2-dev libssl-dev libcurl4-openssl-dev libxml2-dev
+
+R
+install.packages(c("plumber", "mongolite", "rjson", "dbscan", "Rook", "lubridate", "stringr", "reticulate"))
+q()
+
+Rscript assist.R
+
+
+### run-api.R ###
+library(plumber)
+# Initialize the API
+r <- plumb("assist.R")  # Reference the main script
+r$run(port = 4321)
+### run-api.R ###
+Rscript run-api.R
+
+
+### change the upload function in assist.R in line 16 ###
+#* Enables data upload of CSV files
+#* @post /upload
+upload_data <- function(req) {
+  # Parse the request to extract file information
+  files <- Rook::Multipart$parse(req)
+  
+  # Debugging: Print the structure of the parsed files
+  print("Structure of uploaded file:")
+  print(str(files))
+  
+  # Access the uploaded file's temporary path
+  uploaded_file <- files[[1]]$tempfile
+  
+  # Check if the file exists
+  if (file.exists(uploaded_file)) {
+    # Read the CSV file
+    newcsv <- read.csv(uploaded_file, header = TRUE, as.is = TRUE, dec = ".")
+    
+    # Display a sample of the uploaded data
+    print("Sample of uploaded data:")
+    print(head(newcsv))
+    
+    # Save the uploaded data locally
+    output_file <- files[[1]]$filename
+    write.csv(x = newcsv, file = output_file, row.names = FALSE)
+    
+    print(paste("Just uploaded and saved as:", output_file))
+    return(paste("File uploaded and saved as:", output_file))
+  } else {
+    stop("Uploaded file not found.")
+  }
+}
+### change the upload function in assist.R in line 16 ###
+
+
+"V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18","V19","V20","V21","V22","V23","V24","V25","V26","V27","target"
+[N,N,N,N,N,N,N,N,N,N,N,C,C,N,N,N,N,N,N,N,C,N,N,N,N,N,N,C]
+
+
+mkdir Output/FPGROWTH
+mkdir Output/FPGROWTH_filtered

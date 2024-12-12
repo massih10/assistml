@@ -262,9 +262,13 @@ new_data["Selection_Criteria"]["exclude_confidence"]=1
 write_ready=json.dumps(new_data,sort_keys=True)
 filedotindex=filename.find(".")
 
+
+print("analysis.py line 266")
 filename=filename[:filedotindex]
 dir=os.path.dirname(os.path.abspath(__file__))
 dir=dir+"/Output/FPGROWTH_FILTERED/"
+print("analysis.py line 270")
+print(dir)
 filepath= dir+"EXP_"+str(max_count)+"_selected.json"
 
 with open(filepath, "a") as myfile:
@@ -276,7 +280,7 @@ database details
 '''
 mylist = []
 print("Connected to database")
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+myclient = myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
 dbname = myclient["assistml"]
 collection_rules = dbname["rules"]
 mylist.append(json.loads(write_ready))

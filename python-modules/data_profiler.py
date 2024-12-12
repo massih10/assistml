@@ -282,6 +282,17 @@ class DataProfiler():
 
     # Check if information about this dataset is already available in DB and return status in boolean.
     def check_data_availability_in_db(self, dataset_info_json):
+        myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
+        try:
+            # List all databases
+            db_list = myclient.list_database_names()
+            print("Connection successful. Databases available:")
+            print(db_list)
+        except pymongo.errors.ConnectionError as e:
+            print("Connection failed:", e)
+            
+        dbname = myclient["assistml"]
+        self.collection_datasets = dbname["datasets"]
         similar_document = self.collection_datasets.find(
             {'Info.dataset_name': dataset_info_json["Info"]['dataset_name'],
              'Info.use_case': dataset_info_json["Info"]['use_case'],
@@ -291,7 +302,9 @@ class DataProfiler():
              'Info.datetime_ratio': dataset_info_json["Info"]['datetime_ratio'],
              'Info.unstructured_ratio': dataset_info_json["Info"]['unstructured_ratio']}
             , {"_id": 0})
-        if (similar_document.count() == 0):
+        similar_docs = list(similar_document)  # Convert cursor to list
+        print(similar_docs)
+        if (len(similar_docs)== 0):
             return False
         else:
             return True
@@ -598,7 +611,15 @@ class DataProfiler():
         # Connect to Database and write json data
         db_write_status = ''
         print("Connected to database")
-        myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+        myclient = pymongo.MongoClient("mongodb://admin:admin@localhost:27017/")
+        try:
+            # List all databases
+            db_list = myclient.list_database_names()
+            print("Connection successful. Databases available:")
+            print(db_list)
+        except pymongo.errors.ConnectionError as e:
+            print("Connection failed:", e)
+
         dbname = myclient["assistml"]
         self.collection_datasets = dbname["datasets"]
         data_already_in_db = self.check_data_availability_in_db(json.loads(self.json_data))

@@ -46,7 +46,7 @@ rank_models<-function(groupcodes,preferences){
   if(verbose){print("Connecting to mongo to get enriched models")}
   enriched_models<-mongolite::mongo(collection = "enriched_models",
                                     db="assistml",
-                                    url="mongodb://localhost")
+                                    url="mongodb://admin:admin@localhost:27017/")
   # Test string of model codes
   # print( paste(groupcodes$acceptable_models,collapse = "\", \"") )
 

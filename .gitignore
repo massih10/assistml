@@ -1,0 +1,9 @@
+# Exclude the virtual environment
+venv-assistml/
+
+# Exclude outputs
+python-modules/Output/FPGROWTH/
+python-modules/Output/FPGROWTH_FILTERED/
+
+# Exclude compiled Python files
+*.pyc
